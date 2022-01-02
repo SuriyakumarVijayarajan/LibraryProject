@@ -26,14 +26,13 @@
     <div >
         <fieldset id="register">
             <legend><h3>User register</h3></legend>
-        <form action="adminjsp" method="post">
-        <label for="user name">User name</label><br>
-        <input type="text" id="text" name="text"  required pattern="[A-Za-z]{3,}" ><br><br>
-        <label for="city">City</label><br>
-        <input type="text" id="text1" name="text1"  required pattern="[A-Za-z]{3,}" ><br><br>
-        <label for="mobileno">Mobile number</label><br>
-        <input type="tel" id="text3" name="text3" required pattern="[6-9][0-9]{9}"><br><br>
-        <button type="submit">Add Supplier</button>
+        <form action="finedetail" method="post">
+        <label for="user name">Fine Range</label><br>
+        <input type="text" id="text" name="text" required pattern="[0-9]{1,}"><br><br>
+        <label for="city">Fine Amount</label><br>
+        <input type="text" id="text1" name="text1" required pattern="[0-9]{1,}"><br><br>
+        
+        <button type="submit">Add Fine Details</button>
     </form>
 </fieldset>
 

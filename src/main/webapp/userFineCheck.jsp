@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"  import="com.library.connection.*" import ="java.util.List" import ="com.library.test.*" import="java.sql.*" import="com.library.dao.impl.*" %>
+    pageEncoding="ISO-8859-1" import="com.library.dao.impl.*" import="com.library.model.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,17 +22,15 @@
 </head>
 <body>
 <fieldset id="register">
-<form action="AuthorSearch.jsp" method="post">
-<label >Search By Author Name</label>
-<input type="text" name="author" pattern="[A-Za-z]{3,}" required>
-<button type="submit">Search Book</button>
-</form>
-<form action="CategorySearch.jsp" method="post">
-<label >Search By Category Name</label>
-<input type="text" name="category" pattern="[A-Za-z]{3,}" required>
-<button type="submit">Search Book</button>
-</form>
+<h1>Welcome</h1>
+	<form>
+	<p>Welcome you have pending fine</p>
+	<p>You have to repay the fine amount to enter in to library</p>
+	<p>Are you ready to pay </p>
+	<button type="submit"><a href="index.jsp">Pay later</a></button>
+	<button type="submit"><a href="loginFine.jsp">Pay now</a></button>
+	</form>
+		<button><a href="Logout.jsp">logout</a></button>	
 </fieldset>
-
 </body>
 </html>

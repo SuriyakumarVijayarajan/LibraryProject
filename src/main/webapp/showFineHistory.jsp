@@ -1,5 +1,6 @@
+<%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"  import="com.library.connection.*" import ="java.util.List" import ="com.library.test.*" import="java.sql.*" import="com.library.dao.impl.*" %>
+    pageEncoding="ISO-8859-1" import="com.library.connection.*" import="com.library.dao.impl.*" import="com.library.model.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@ table, th, td {
   border-collapse: collapse;
   padding: 20px;
 }
-
+<style>
         #register{
             width: 350px;
             margin-left: 600px;
@@ -19,43 +20,37 @@ table, th, td {
         }
         body{
             background-image: url(https://st2.depositphotos.com/1105977/5461/i/600/depositphotos_54615585-stock-photo-old-books-on-wooden-table.jpg);
-           background-repeat: no-repeat;
+            background-repeat: no-repeat;
             background-size:cover;
             color:springgreen;
         }
 
-   
+    </style>
 </style>
 </head>
 <body>
-
-<%BooksDaoImpl book = new BooksDaoImpl();
-ResultSet rs = book.showBooks();%>
+<%!ResultSet rs; %>
+<h1>Fine History</h1>
 <table>
-<th><b>BookName</b></th>
-<th><b>Category</b></th>
-<th><b>Author</b></th>
-<%while(rs.next()) {
-%>
+<th><b>User Name</b></th>
+<th><b>Fine Amount</b></th>
+<th><b>Collected Time</b></th>
+<%
 
-<tr>
+FineHistoryDaoImpl fineHist = new FineHistoryDaoImpl();
+
+				rs = fineHist.view();
+				while(rs.next()){%>
+					
+			<tr>
 <td><%=rs.getString(1)%></td>
 <td>  <%=rs.getString(2) %></td>
 <td>  <%=rs.getString(3) %></td>
-</tr>
-<%
-}
-%>
-</table>
-	
-
-
-
-<a href="user.jsp">User Home</a>
-<button><a href="Logout.jsp">logout</a></button>
-
-
-
+</tr>	
+				
+			<%} %>
+			
+			</table>
 
 </body>
 </html>

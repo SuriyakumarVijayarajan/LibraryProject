@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"  import="com.library.connection.*" import ="java.util.List" import ="com.library.test.*" import="java.sql.*" import="com.library.dao.impl.*" %>
+    pageEncoding="ISO-8859-1" import="com.library.dao.impl.*" import="com.library.model.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,17 +22,15 @@
 </head>
 <body>
 <fieldset id="register">
-<form action="AuthorSearch.jsp" method="post">
-<label >Search By Author Name</label>
-<input type="text" name="author" pattern="[A-Za-z]{3,}" required>
-<button type="submit">Search Book</button>
-</form>
-<form action="CategorySearch.jsp" method="post">
-<label >Search By Category Name</label>
-<input type="text" name="category" pattern="[A-Za-z]{3,}" required>
-<button type="submit">Search Book</button>
-</form>
+<%
+BooksDaoImpl book=new BooksDaoImpl(); 
+String book_title=session.getAttribute("bookname").toString();
+String user_name=session.getAttribute("user").toString();
+	Books b1 = new Books(book_title, user_name);
+	String prerequestStatus=book.preRequest(b1);%>
+	
+	<h3><%=prerequestStatus %></h3>
+	<button><a href="Logout.jsp">logout</a></button>
 </fieldset>
-
 </body>
 </html>

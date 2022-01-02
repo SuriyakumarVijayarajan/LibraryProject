@@ -298,7 +298,7 @@ public void delete(Books book) {
 
 	}
 
-	public void preRequest(Books book)  {
+	public String preRequest(Books book)  {
 		// TODO Auto-generated method stub
 		String query="update book_details set prerequest=? where book_title in ? and prerequest is null";
 		Connection con = null;
@@ -309,15 +309,16 @@ public void delete(Books book) {
 		pstmt.setString(2, book.getBook_title());
 		int i=pstmt.executeUpdate();
 		if(i>0) {
-			System.out.println("Pre Request successful");
+			return "Pre Request successful";
 		}
 		else {
-			System.out.println("Prerequest un success");
+			return "Prerequest un success";
 		}
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
 		
 		
 	}

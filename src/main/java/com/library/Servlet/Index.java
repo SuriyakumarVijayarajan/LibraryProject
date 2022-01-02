@@ -1,4 +1,4 @@
-package com.library.test;
+package com.library.Servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -44,9 +44,29 @@ session.setAttribute("admin", user_name);
 		
 		resp.sendRedirect("admin.jsp");
 	}
+	if (val.equals("supplier")) {
+		session.setAttribute("supplier", user_name);
+				System.out.println("welcome Supplier " + user_name);
+				
+				resp.sendRedirect("supplierLogin.jsp");
+			}
 	else if(val.equals("user")) {
+		session.setAttribute("user", user_name);
 		System.out.println("Welcome User" + user_name);
-		resp.sendRedirect("user.jsp");
+		int fineOf=0;
+		Users u3 = new Users(fineOf,user_name);
+		UsersDaoImpl user1=new UsersDaoImpl();
+		int fineamount = user1.getFine(u3);
+		System.out.println(fineamount);
+		session.setAttribute("loginfine", fineamount);
+		if(fineamount>0) {
+			resp.sendRedirect("userFineCheck.jsp");
+			}
+		else if(fineamount==0) {
+			resp.sendRedirect("user.jsp");
+			}
+		
+		
 	}
 }
 }

@@ -17,6 +17,12 @@
           text-decoration: none;
           text-decoration-line: none;
         }
+        body{
+            background-image: url(https://st2.depositphotos.com/1105977/5461/i/600/depositphotos_54615585-stock-photo-old-books-on-wooden-table.jpg);
+            background-repeat: no-repeat;
+            background-size:cover;
+            color: white;
+        }
       </style>
         
     </head>
@@ -31,25 +37,22 @@
       <ul type="none">
             <li>
               <a href="showBook.jsp">Show Books</a>
-            </li>
+            </li><br><br>
             <li>
-              <a href="/admin/addbook">Add Books</a>
-            </li>
+              <a href="addBook.jsp">Add Books</a>
+            </li><br><br>
             <li>
-              <a href="/admin/addadmin">Add Supplier Details</a>
-            </li>
+              <a href="supplier.jsp">Add Supplier Details</a>
+            </li><br><br>
             <li>
-              <a href="/querybooks"> Add Book Issue Details</a>
-            </li>
+              <a href="FineHistory.jsp">Add Fine Details</a>
+            </li><br><br>
             <li>
-              <a href="/borrowbook">Add Fine Details</a>
-            </li>
+              <a href="signup.jsp">Add User</a>
+            </li><br><br>
             <li>
-              <a href="/returnbook">Add User</a>
-            </li>
-            <li>
-              <a href="">View Fine History</a>
-            </li>
+              <a href="showFineHistory.jsp">View Fine History</a>
+            </li><br><br>
         </ul>
         </nav>
         </div>

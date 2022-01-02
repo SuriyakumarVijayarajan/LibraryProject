@@ -38,7 +38,7 @@ public class FineHistoryDaoImpl implements FineHistoryDao {
 		
 	}
 
-	public List<FineHistory> view() {
+	public ResultSet view() {
 		// TODO Auto-generated method stub
 		List<FineHistory> fineList = new ArrayList<FineHistory>();
 		try {
@@ -49,13 +49,13 @@ public class FineHistoryDaoImpl implements FineHistoryDao {
 		while(rs.next()) {
 			FineHistory fine=new FineHistory(rs.getString(1),rs.getInt(2),rs.getString(3));
 			fineList.add(fine);
-			
+			return rs;
 			} 
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return fineList;
+		return null;
 	}
 	
 	

@@ -154,7 +154,9 @@ public int getFine(Users user)  {
 	PreparedStatement pstmt=con.prepareStatement(query);
 	pstmt.setString(1, user.getUser_name());
 	ResultSet rs=pstmt.executeQuery();
+	System.out.println(user.getUser_name());
 	while(rs.next()) {
+		System.out.println(rs.getInt(1));
 		return rs.getInt(1);
 	}
 	
@@ -176,8 +178,11 @@ public int setFine(Users user)  {
 	ResultSet rs=pstmt.executeQuery();
 	int userWallet=0;
 	while(rs.next()) {
-		userWallet=rs.getInt(1)-rs.getInt(2);
+		userWallet=rs.getInt(1)-user.getFine_amount();
 		System.out.println(user.getFine_amount());
+		System.out.println("hi");
+		System.out.println(rs.getInt(1));
+		System.out.println(rs.getInt(2));
 	
 	}
 	
@@ -193,6 +198,25 @@ public int setFine(Users user)  {
 	}
 	return 0;
 	
+	
+}
+public void forgotPassword(Users users) {
+	// TODO Auto-generated method stub
+	String query="update user_details set password=? where user_name=?";
+	try {
+		
+		Connection con=ConnectionUtil.getDBConnect();
+		PreparedStatement pstmt=con.prepareStatement(query);
+		pstmt.setString(1, users.getPassword());
+		pstmt.setString(2, users.getUser_name());
+		int i=pstmt.executeUpdate();
+		if(i>0) {
+			System.out.println("password updated");
+		}
+	}catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	
 }
 

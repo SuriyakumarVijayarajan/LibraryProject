@@ -1,24 +1,27 @@
-package com.library.test;
+package com.library.Servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.library.dao.impl.SuppliersDaoImpl;
-import com.library.model.Suppliers;
+import com.library.dao.impl.OrderBookDaoImpl;
+import com.library.model.OrderBook;
 
 /**
- * Servlet implementation class Supplier
+ * Servlet implementation class RequestBookServlet
  */
-public class Supplier extends HttpServlet {
+@WebServlet("/requestBook")
+public class RequestBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Supplier() {
+    public RequestBookServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,17 +39,16 @@ public class Supplier extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String name=request.getParameter("text");
-		String address=request.getParameter("text1");
-		long contact=Long.parseLong(request.getParameter("text3"));
-		SuppliersDaoImpl supply=new SuppliersDaoImpl();
-		Suppliers s1 = new Suppliers(name, address, contact);
-		try {
-			supply.insert(s1);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		HttpSession session=request.getSession();
+		String book_name=request.getParameter("bookName");
+		String author=request.getParameter("authorName");
+		session.setAttribute("newbook", book_name);
+		String user_name=session.getAttribute("user").toString();
+		String supplier_id = null;
+		OrderBook p1 = new OrderBook(user_name, book_name, author, supplier_id);
+		OrderBookDaoImpl obDao=new OrderBookDaoImpl();
+		obDao.insert(p1);
+		response.sendRedirect("requestAdmin.jsp");
 	}
 
 }

@@ -28,18 +28,18 @@
             <legend><h3>User register</h3></legend>
         <form action="addBook" method="post">
         <label for="user name">Book Code</label><br>
-        <input type="text" id="text" name="text" required><br><br>
+        <input type="text" id="text" name="text" required pattern="[A-Za-z]{3,}"><br><br>
         <label for="city">Book Name</label><br>
-        <input type="text" id="text1" name="text1" required><br><br>
+        <input type="text" id="text1" name="text1" required pattern="[A-Za-z]{3,}"><br><br>
         <label for="password">Category</label><br>
-        <input type="password" id="text2" name="text2" required><br><br>
+        <input type="password" id="text2" name="text2" required pattern="[A-Za-z]{3,}"><br><br>
         <label for="mobileno">Author</label><br>
-        <input type="tel" id="text3" name="text3" required><br><br>
+        <input type="tel" id="text3" name="text3" required pattern="[A-Za-z]{3,}"><br><br>
         <label for="email">Price</label><br>
-        <input type="number" id="text4" name="text4" required><br><br>
+        <input type="number" id="text4" name="text4" required pattern="[0-9]{1,}"><br><br>
         <label for="email">Rack Number</label><br>
-        <input type="number" id="text4" name="text5" required><br><br>
-        <button><a href="admin.jsp">Signup</a></button>
+        <input type="number" id="text4" name="text5" required pattern="[0-9]{1,}"><br><br>
+        <button type="submit">Add Book</button>
     </form>
 </fieldset>
 

@@ -1,30 +1,26 @@
-package com.library.test;
+package com.library.Servlet;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Scanner;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.library.dao.impl.BooksDaoImpl;
-import com.library.model.Books;
+import com.library.dao.impl.FinesDaoImpl;
+import com.library.model.Fines;
 
 /**
- * Servlet implementation class SearchBook
+ * Servlet implementation class FineDetailsServlet
  */
-@WebServlet("/searchBook")
-public class SearchBook extends HttpServlet {
+@WebServlet("/finedetail")
+public class FineDetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchBook() {
+    public FineDetailsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,38 +38,22 @@ public class SearchBook extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-		String authorName=request.getParameter("author");
-		String categoryName=request.getParameter("category");
-		BooksDaoImpl book=new BooksDaoImpl();
+	
 		
-		String category = null,book_title=null,author=null;
-		Books books=new Books(book_title,category,authorName);
-		ResultSet rs = book.authorFetch(books);
+		int fine_range=Integer.parseInt(request.getParameter("text"));
+		int fine_amount=Integer.parseInt(request.getParameter("text1"));
+		FinesDaoImpl fine=new FinesDaoImpl();
+		System.out.println(fine_range);
+		Fines fines = new Fines(fine_range, fine_amount);
 		try {
-			while (rs.next()) {
-				System.out.println(rs.getString(1));
-
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-		book_title=null;
-		author=null;
-		category =null;
-		
-		books=new Books(book_title,category,authorName);
-		rs = book.categoryFetch(books);
-		try {
-			while (rs.next()) {
-				System.out.println(rs.getString(1));
-
-			}
+			fine.insert(fines);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		response.sendRedirect("admin.jsp");
+		
 	}
 
 }

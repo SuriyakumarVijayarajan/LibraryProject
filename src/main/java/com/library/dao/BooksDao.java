@@ -18,7 +18,7 @@ public interface BooksDao {
 	public void bookAvail(Books book);
 	public void updateBookIssue(Books book);
 	public void returnBook(Books book);
-	public void preRequest(Books book);
+	public String preRequest(Books book);
 	public boolean checkReturn(Books book);
 	public int getBookIssueNo(Books book);
 
